@@ -1,2 +1,3 @@
-# mvc-class
-Repositório para aulas com MVC
+# Projeto de Concessionária
+
+Projeto para criação de uma concessionária utilizando PHP, MySQL e arquitetura MVC.
