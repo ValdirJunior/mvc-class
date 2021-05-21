@@ -1,6 +1,7 @@
 <?php
 
 class Conexao {
+    
     private static $conexao;
 
     private function __construct() {}
