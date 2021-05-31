@@ -1,7 +1,7 @@
 <?php
 
 class Conexao {
-    
+
     private static $conexao;
 
     private function __construct() {}
@@ -10,7 +10,7 @@ class Conexao {
 
         if (is_null(self::$conexao)) {
             #cria uma nova conexão com o banco
-            self::$conexao = new \PDO('mysql:host=localhost;port=3306;dbname=mvcconcessionaria', 'root', 'root');
+            self::$conexao = new \PDO('mysql:host=localhost;port=3306;dbname=mvcconcessionaria', 'root', '');
             self::$conexao->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             self::$conexao->exec('set names utf8');
         }

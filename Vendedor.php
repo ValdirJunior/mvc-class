@@ -46,6 +46,28 @@ class Vendedor {
         return false;        
     }
 
+    private function escapar($dados) {
+        if (is_string($dados) & !empty($dados)) {
+            return "'".addslashes($dados)."'";
+        } elseif (is_bool($dados)) {
+            return $dados ? 'TRUE' : 'FALSE';
+        } elseif ($dados !== '') {
+            return $dados;
+        } else {
+            return 'NULL';
+        }
+    }
+
+    private function preparar($dados) {
+        $resultado = array();
+        foreach ($dados as $k => $v) {
+            if (is_scalar($v)) {
+                $resultado[$k] = $this->escapar($v);
+            }
+        }
+        return $resultado;
+    }
+
     public static function all() {
 
         $conexao = Conexao::getInstance();
@@ -103,7 +125,7 @@ class Vendedor {
     public static function destroy($id) {
         $conexao = Conexao::getInstance();
 
-        $sql = "DELETE FROM contatos WHERE id = '{$id}'; ";
+        $sql = "DELETE FROM vendedor WHERE id = '{$id}'; ";
 
         if ($conexao->exec($sql)) {
             return true;
